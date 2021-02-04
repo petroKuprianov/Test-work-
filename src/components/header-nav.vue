@@ -6,27 +6,27 @@
   <nav class="header__nav">
     <ul class="header__nav-list">
       <li class="header__nav-item">
-        <p>How it works</p>
+        <a href=""><p>How it works</p></a>
       </li>
       <li class="header__nav-item">
-        <p>About</p>
+        <a href=""><p>About</p></a>
       </li>
       <li class="header__nav-item">
-        <p>Instructions</p>
+        <a href=""><p>Instructions</p></a>
       </li>
       <li class="header__nav-item">
-        <p>Accounts</p>
+        <a href=""><p>Accounts</p></a>
       </li>
       <li class="header__nav-item">
-        <p>Platforms</p>
+        <a href=""><p>Platforms</p></a>
       </li>
       <li class="header__nav-item">
-        <p>Contact</p>
+        <a href=""><p>Contact</p></a>
       </li>
     </ul>
   </nav>
   <div class="header__menuMob">
-    <img @click="showMenu = !showMenu" src="../assets/eva_menu-fill.svg" alt="Burger menu icon">
+    <img @click="openMenu" src="../assets/eva_menu-fill.svg" alt="Burger menu icon">
     <div v-if="showMenu" class="header__menuMob-menu">
       <nav class="header__navMob">
         <ul class="header__navMob-listMob">
@@ -48,6 +48,24 @@
           <li class="header__navMob-itemMob">
             <p>Contact</p>
           </li>
+          <li class="header__mob">
+            <div class="header__signMob">
+              <button>
+                <p>Sign in for free</p>
+              </button>
+            </div>
+          </li>
+          <li>
+            <div class="header__selectMob" @click="openLangsMob">
+              <p>{{selectedLang}}</p>
+              <img src="../assets/Vector.svg" alt="Vector">
+              <div v-if="openLangMob" class="header__dropDownMob">
+                <p v-for="item in langs" :key="item" @click="selectLang(item)">
+                  {{item}}
+                </p>
+              </div>
+            </div>
+          </li>
         </ul>
       </nav>
     </div>
@@ -57,10 +75,16 @@
       <p>Sign in for free</p>
     </button>
   </div>
-  <div class="header__select">
-    <p>EN</p>
+  <div class="header__select" @click="openLangs">
+    <p>{{selectedLang}}</p>
     <img src="../assets/Vector.svg" alt="Vector">
+    <div v-if="openLang" class="header__dropDown">
+      <p v-for="item in langs" :key="item" @click="selectLang(item)">
+        {{item}}
+      </p>
+    </div>
   </div>
+
 
 
 </header>
@@ -71,9 +95,32 @@ export default {
 name: "header-nav",
   data(){
   return{
-    showMenu:false
+    showMenu:false,
+    openLang:false,
+    openLangMob:false,
+    selectedLang: 'UA',
+    langs:['EN', 'RU', 'UA']
   }
+  },
+  methods: {
+  selectLang(lang){
+    this.selectedLang = lang;
+  },
+  openLangs(){
+    this.openLang = !this.openLang;
+    this.showMenu ? this.showMenu = !this.showMenu: '';
+
+  },
+    openMenu(){
+      this.showMenu = !this.showMenu;
+      this.openLang ? this.openLang = !this.openLang : '';
+      this.openLangMob ? this.openLangMob = !this.openLangMob: '';
+    },
+    openLangsMob(){
+      this.openLangMob = !this.openLangMob;
+    }
   }
+
 }
 </script>
 
@@ -126,9 +173,12 @@ name: "header-nav",
     &-menu{
       position: absolute;
       right: 0px;
+      width: 100%;
       background: #bcb2fa;
       border-radius: 10px;
-      width: 200px;
+      //width: 200px;
+      margin-top: 20px;
+      //height: 100vh;
     }
   }
   &__nav{
@@ -144,6 +194,9 @@ name: "header-nav",
     &-item{
       margin-left: 32px;
     }
+    //&-item:hover{
+    //  cursor: pointer;
+    //}
     &-item:first-child{
       margin-left: 0;
     }
@@ -160,6 +213,7 @@ name: "header-nav",
     align-items: center;
     margin-top: 20px;
     margin-right: 24px;
+    outline: none;
     p{
       font-style: normal;
       font-weight: 500;
@@ -171,6 +225,39 @@ name: "header-nav",
       width: 9px;
       height: 5px;
     }
+  }
+  &__select:hover{
+    cursor: pointer;
+  }
+
+  &__selectMob{
+    //float: right;
+    margin-left: 10px;
+    width: 80px;
+    height: 40px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 60px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 20px;
+    margin-right: 24px;
+    outline: none;
+    p{
+      font-style: normal;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 16px;
+      color: #333333;
+    }
+    img{
+      width: 9px;
+      height: 5px;
+    }
+  }
+  &__selectMob:hover{
+    cursor: pointer;
   }
   &__sign{
     button {
@@ -203,6 +290,78 @@ name: "header-nav",
     }
 
   }
+  &__signMob{
+    button {
+      padding: 13px 24px;
+      width: 187px;
+      height: 45px;
+      background: #6248FF;
+      border-radius: 60px;
+      border: none;
+      margin-top: 20px;
+      margin-right: 60px;
+      transition: 0.5s;
+      outline: none;
+      margin-left: 10px;
+      p{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 14px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+      }
+    }
+    button:hover{
+      background: #7181FC;
+      cursor: pointer;
+    }
+    button:active{
+      background: #354BF4;
+    }
+
+  }
+  &__dropDown{
+    position: absolute;
+    margin-top: 200px;
+    background: #bcb2fa;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    P{
+      width: 100%;
+      height: 20px;
+      text-align: center;
+      padding: 10px;
+    }
+    p:hover{
+      background-color: #828282;
+      cursor: pointer;
+    }
+  }
+  &__dropDownMob{
+    position: absolute;
+    margin-top: 180px;
+    background: #bcb2fa;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    P{
+      width: 100%;
+      height: 20px;
+      text-align: center;
+      padding: 10px;
+    }
+    p:hover{
+      background-color: #828282;
+      cursor: pointer;
+    }
+  }
+  &__mob{
+    display: none;
+  }
 }
 @media screen and (max-width:1155px) {
   .header{
@@ -220,6 +379,20 @@ name: "header-nav",
   &__menuMob{
     display: block;
   }
+  &__select{
+    display: none;
+  }
 }
+}
+
+@media screen and (max-width: 540px){
+  .header{
+    &__sign{
+      display: none;
+    }
+    &__mob{
+      display: block;
+    }
+  }
 }
 </style>

@@ -21,7 +21,7 @@
         <input type="text" class="contact__wrapper-form-name" placeholder="Name">
         <input type="text" class="contact__wrapper-form-email" placeholder="Email"  v-model="inputEmail" @input="validateEmail" :class="isCorrectEmail && inputEmail.length ? 'contact__wrapper-form-correct': ''">
         <p class="contact__wrapper-form-check" v-if="!isCorrectEmail && inputEmail.length">Incorrect email type</p>
-        <input type="text" class="contact__wrapper-form-msg" placeholder="Message">
+        <textarea class="contact__wrapper-form-msg" placeholder="Message"></textarea>
         <input class="contact__wrapper-form-submit" type="submit" value="send" :disabled="!isCorrectEmail">
     </form>
   </div>
@@ -140,6 +140,10 @@ export default {
           line-height: 26px;
           color: #828282;
         }
+      &-msg{
+        margin-top: 24px;
+        height: 89px;
+      }
       &-name:focus,&-email:focus, &-msg:focus{
         outline: none;
         border: 1px solid #828282;
@@ -184,7 +188,7 @@ export default {
 @media screen and (max-width: 1250px){
   .contact{
     &__overlay{
-      min-height: 1100px;
+      min-height: 1160px;
     }
     &__wrapper{
       padding-bottom: 60px;
@@ -201,6 +205,49 @@ export default {
       &-form{
         margin-top: 48px;
         margin-bottom: 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 720px){
+  .contact{
+    height: 1138px;
+    &__overlay{
+      height: 1138px;
+    }
+    &__wrapper{
+      padding: 48px 20px;
+      &-info{
+        &-header{
+          margin-left: 0;
+          font-size: 40px;
+          line-height: 44px;
+        }
+        &-main{
+          width: 280px;
+        }
+        &-owner{
+          width: 280px;
+        }
+        &-addressWrap{
+          width: 280px;
+        }
+      }
+      &-form{
+        width: 280px;
+        padding: 48px 16px;
+        &-name{
+          width: 248px;
+        }
+        &-email{
+          width: 248px;
+        }
+        &-msg{
+          width: 248px;
+          margin-top: 24px;
+          height: 89px;
+        }
       }
     }
   }

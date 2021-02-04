@@ -908,6 +908,8 @@ export default {
           border: 2px solid #4F62F6;
           box-sizing: border-box;
           border-radius: 30px;
+          padding: 24px;
+          margin-top: 24px;
           &-number{
               font-style: normal;
               font-weight: 500;
@@ -915,12 +917,114 @@ export default {
               line-height: 18px;
               color: #4F62F6;
           }
+          &-header{
+            font-style: normal;
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 29px;
+            color: #333333;
+            margin-top: 8px;
+          }
+          &-info{
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 30px;
+            color: #4F4F4F;
+            margin-top: 24px;
+          }
+        }
+        &-step:first-child{
+          margin-top: 40px;
+        }
+      }
+    }
+    &__overlay{
+      height: 50px;
+      width: 250px;
+    }
+    &__invest{
+      &-left{
+        &-info{
+          span{
+            font-style: normal;
+            font-weight: 600;
+            font-size: 40px;
+            line-height: 44px;
+            color: #333333;
+          }
+        }
+        &-swiper{
+          &-first{
+            margin-top: 390px;
+            left: 15%;
+          }
+          &-second{
+            left: 70%;
+            margin-top: 390px;
+          }
+        }
+      }
+      &-right{
+        &-name{
+          &-photo{
+            display: none;
+          }
+          &-text{
+            margin-left: 0px;
+          }
+        }
+        &-comment{
+          width: 280px;
+        }
+      }
+    }
+    &__questions{
+      &-info{
+        width: 280px;
+        span{
+          font-size: 40px;
+          line-height: 44px;
         }
       }
     }
   }
 }
+@media screen and (max-width: 550px){
+  .main{
+    &__questions{
+      &-items{
+        &-item{
+          width: 280px;
+          padding: 24px 30px 24px 16px;
+          &-header{
+            font-size: 18px;
+            line-height: 22px;
+          }
+        }
+      }
+    }
+  }
 
+}
+
+@media screen and (max-width: 420px){
+  .main{
+    &__invest{
+      &-left{
+        &-swiper{
+          &-first{
+            left: 30px;
+          }
+          &-second{
+            left: 60%;
+          }
+        }
+      }
+    }
+  }
+}
 </style>
 <!--<div class="main__steps-containerMob-step">-->
 <!--<p class="main__steps-containerMob-step-number">04.</p>-->

@@ -247,6 +247,9 @@ export default {
             margin-top: 24px;
             margin-left: 47px;
           }
+          &-item:first-child{
+            margin-left: 20px;
+          }
         }
       }
       &-warning{
@@ -292,5 +295,54 @@ export default {
       }
     }
   }
+
+@media screen and (max-width: 720px){
+  .footer{
+    &__logo{
+      align-self: center;
+    }
+    &__top{
+      align-items: flex-start;
+      &-nav{
+        &-list{
+          flex-direction: column;
+          &-item{
+            margin-left: 20px;
+            margin-top: 32px;
+          }
+        }
+      }
+      &-warning{
+        width: 280px;
+        margin-left: 20px;
+        &-header{
+          text-align: left;
+        }
+        &-wrapper{
+          width: 280px;
+          &-text{
+            text-align: left;
+          }
+        }
+      }
+      &-disclaimer{
+        width: 280px;
+        margin-left: 20px;
+        &-header{
+          text-align: left;
+        }
+        &-wrapper{
+          width: 280px;
+          &-text{
+            text-align: left;
+          }
+        }
+      }
+    }
+    &__bottom{
+      margin-left: 20px;
+    }
+  }
+}
 
 </style>

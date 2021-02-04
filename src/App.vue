@@ -61,5 +61,6 @@ li{
 }
 a{
   text-decoration: none;
+  color: initial;
 }
 </style>
